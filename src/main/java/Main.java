@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //Cpmpund Interest Calculator
+        //Compund Interest Calculator
 
         Scanner scanner = new Scanner(System.in);
 

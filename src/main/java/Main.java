@@ -1,49 +1,47 @@
+import java.util.Random;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+      //NUMBER GUESSING GAME
+
+        Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        double num1;
-        double num2;
-        char operator;
-        double result = 0;
-        boolean validOperation = true;
+        int guess;
+        int attempts = 0;
+        int min = 1;
+        int max = 100;
+        int randomNumber = random.nextInt(min, max + 1);
 
-        System.out.print("Enter the first number: ");
-        num1 = scanner.nextDouble();
+        System.out.println("Number Guessing Game");
+        System.out.printf("Guess the number between %d-%d\n", min, max);
 
-        System.out.print("Enter an operator (+, _, *, /, ^ ): ");
-        operator = scanner.next().charAt(0);
+        do{
+            System.out.print("Enter a guess: ");
+            guess = scanner.nextInt();
+            attempts++;
 
-        System.out.print("Enter the second number: ");
-        num2 = scanner.nextDouble();
-
-        switch(operator){
-            case '+' -> result = num1 + num2;
-            case '-' -> result = num1 - num2;
-            case '*' -> result = num1 * num2;
-            case '/' ->  {
-                if(num2 == 0){
-                    System.out.println("Cannot divide by zero!");
-                    validOperation = false;
-                }
-                else{
-                    result = num1 / num2;
-                }
+            if(guess < randomNumber){
+                System.out.println("TOO LOW! Try again");
             }
-            case '^' -> result = Math.pow(num1, num2);
-            default -> {
-                System.out.println("Invalid operator! ");
-                validOperation = false;
+            else if(guess > randomNumber){
+                System.out.println("TOO HIGH! Try again");
             }
-        }
-            if(validOperation){
-                System.out.println(result);
+            else{
+                System.out.println("CORRECT! The number was " + randomNumber);
+                System.out.println("# of attempts: " + attempts);
             }
 
+        }while(guess != randomNumber);
 
         scanner.close();
+
+
+
+
+
+
       
     }
 }
